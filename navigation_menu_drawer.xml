@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2021. Samsung Electronics Co., Ltd.
+  ~ @author YOUNGJIN JO (yjspecial.jo@samsung.com) IMS Platform team / CP Solution R&D
+  ~
+  ~ All right reserved. This software is the confidential and proprietary
+  ~ information of Samsung Electronics ("Confidential Information").
+  ~ You shall not disclose such Confidential Information and shall use it
+  ~ only in accordance with the terms of the license agreement you
+  ~ entered into with Samsung Electronics.
+  -->
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <item android:title="@string/menu_dm_item_viewer">
+        <menu>
+            <group
+                android:id="@+id/menu_dm_item_viewer"
+                android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_all_message_viewer"
+                    android:icon="@drawable/ic_menu_all_message_viewer"
+                    android:title="@string/menu_all_messages"
+                    android:visible="true" />
+<!--                <item-->
+<!--                    android:id="@+id/new_page"-->
+<!--                    android:icon="@drawable/ic_menu_all_message_viewer"-->
+<!--                    android:title="@string/new_page_name"-->
+<!--                    android:visible="true" />-->
+
+                <item
+                    android:id="@+id/nav_sip_message_viewer"
+                    android:icon="@drawable/ic_menu_sip_message_viewer"
+                    android:title="@string/menu_sip_messages"
+                    android:visible="false" />
+                <item
+                    android:id="@+id/nav_http_message_viewer"
+                    android:icon="@drawable/ic_menu_http_message_viewer"
+                    android:title="@string/menu_http_messages"
+                    android:visible="false" />
+                <item
+                    android:id="@+id/nav_device_info"
+                    android:icon="@drawable/ic_device_info"
+                    android:title="@string/menu_device_info" />
+            </group>
+
+        </menu>
+    </item>
+
+    <group android:id="@+id/menu_settings">
+        <item
+            android:id="@+id/nav_settings"
+            android:icon="@drawable/ic_menu_settings"
+            android:title="@string/menu_settings" />
+    </group>
+</menu>
