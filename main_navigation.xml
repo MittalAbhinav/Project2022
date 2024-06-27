@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2021. Samsung Electronics Co., Ltd.
+  ~ @author YOUNGJIN JO (yjspecial.jo@samsung.com) IMS Platform team / CP Solution R&D
+  ~
+  ~ All right reserved. This software is the confidential and proprietary
+  ~ information of Samsung Electronics ("Confidential Information").
+  ~ You shall not disclose such Confidential Information and shall use it
+  ~ only in accordance with the terms of the license agreement you
+  ~ entered into with Samsung Electronics.
+  -->
+
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_settings"
+        tools:ignore="ExtraText">
+
+    <fragment
+        android:id="@+id/nav_settings"
+        android:name="com.sec.imslogger.ui.settings.fragment.SettingsFragment"
+        android:label="@string/menu_settings"
+        tools:layout="@layout/fragment_settings">
+        <action
+            android:id="@+id/action_nav_settings_to_nav_app_options"
+            app:destination="@id/nav_app_options" />
+        <action
+            android:id="@+id/action_nav_settings_to_nav_log_filter_options"
+            app:destination="@id/nav_log_filter_options" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_app_options"
+        android:name="com.sec.imslogger.ui.settings.fragment.AppOptionsFragment"
+        android:label="@string/app_options_header"
+        tools:layout="@layout/fragment_app_options" />
+
+    <fragment
+        android:id="@+id/nav_log_filter_options"
+        android:name="com.sec.imslogger.ui.settings.fragment.LogFilterOptionsFragment"
+        android:label="@string/log_filter_options_header"
+        tools:layout="@layout/fragment_log_filter_options" />
+
+    <fragment
+        android:id="@+id/nav_all_message_viewer"
+        android:name="com.sec.imslogger.ui.viewers.fragments.AllMessageFragment"
+        android:label="@string/menu_all_messages"
+        tools:layout="@layout/all_message_fragment" />
+<!--    <fragment-->
+<!--        android:id="@+id/new_page"-->
+<!--        android:name="com.sec.imslogger.ui.viewers.fragments.Newpageinterface"-->
+<!--        android:label="@string/new_page_name"-->
+<!--        tools:layout="@layout/new_page_layout" />-->
+
+    <fragment
+        android:id="@+id/nav_sip_message_viewer"
+        android:name="com.sec.imslogger.ui.viewers.fragments.SipMessageFragment"
+        android:label="@string/menu_sip_messages"
+        tools:layout="@layout/sip_message_fragment" />
+
+    <fragment
+        android:id="@+id/nav_http_message_viewer"
+        android:name="com.sec.imslogger.ui.viewers.fragments.HttpMessageFragment"
+        android:label="@string/menu_http_messages"
+        tools:layout="@layout/http_message_fragment" />
+
+    <fragment
+        android:id="@+id/nav_device_info"
+        android:name="com.sec.imslogger.ui.viewers.fragments.DeviceInfoFragment"
+        android:label="@string/menu_device_info"
+        tools:layout="@layout/http_message_fragment" />
+</navigation>
