@@ -1,288 +1,59 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.viewers.fragments.McsDbFragment">
+package com.sec.imslogger.ui.viewers.fragments
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        app:cardElevation="4dp"
-        app:cardCornerRadius="8dp">
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.Button
+import android.widget.TableLayout
+import androidx.fragment.app.Fragment
+import com.sec.imslogger.R
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
+class McsDbFragment : Fragment() {
 
-            <!-- First Row -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="8dp">
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val view = inflater.inflate(R.layout.mcs_db_fragment, container, false)
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Row 1" />
+        // Set up dropdown buttons and table visibility logic
+        setupDropdowns(view)
 
-                <Button
-                    android:id="@+id/dropdown_button1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="▼" />
-            </LinearLayout>
+        return view
+    }
 
-            <TableLayout
-                android:id="@+id/table1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="gone">
+    private fun setupDropdowns(view: View) {
+        val dropdownButton1: Button = view.findViewById(R.id.dropdown_button1)
+        val table1: TableLayout = view.findViewById(R.id.table1)
+        dropdownButton1.setOnClickListener {
+            toggleTableVisibility(table1)
+        }
 
-                <!-- Define 5 rows with 5 columns each -->
-                <TableRow>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 1"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 2"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 3"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 4"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 5"/>
-                </TableRow>
-                <!-- Repeat the TableRow for 5 rows -->
-                <TableRow>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 1"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 2"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 3"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 4"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 5"/>
-                </TableRow>
-                <TableRow>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 1"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 2"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 3"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 4"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 5"/>
-                </TableRow>
-                <TableRow>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 1"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 2"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 3"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 4"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 5"/>
-                </TableRow>
-                <TableRow>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 1"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 2"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 3"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 4"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 5"/>
-                </TableRow>
-            </TableLayout>
+        val dropdownButton2: Button = view.findViewById(R.id.dropdown_button2)
+        val table2: TableLayout = view.findViewById(R.id.table2)
+        dropdownButton2.setOnClickListener {
+            toggleTableVisibility(table2)
+        }
 
-            <!-- Repeat the above LinearLayout and TableLayout block for 4 rows -->
-            <!-- Second Row -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="8dp">
+        val dropdownButton3: Button = view.findViewById(R.id.dropdown_button3)
+        val table3: TableLayout = view.findViewById(R.id.table3)
+        dropdownButton3.setOnClickListener {
+            toggleTableVisibility(table3)
+        }
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Row 2" />
+        val dropdownButton4: Button = view.findViewById(R.id.dropdown_button4)
+        val table4: TableLayout = view.findViewById(R.id.table4)
+        dropdownButton4.setOnClickListener {
+            toggleTableVisibility(table4)
+        }
+    }
 
-                <Button
-                    android:id="@+id/dropdown_button2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="▼" />
-            </LinearLayout>
-
-            <TableLayout
-                android:id="@+id/table2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="gone">
-
-                <!-- Define 5 rows with 5 columns each -->
-                <TableRow>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 1"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 2"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 3"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 4"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 5"/>
-                </TableRow>
-                <!-- Repeat the TableRow for 5 rows -->
-                <TableRow>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 1"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 2"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 3"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 4"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 5"/>
-                </TableRow>
-                <TableRow>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 1"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 2"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 3"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 4"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 5"/>
-                </TableRow>
-                <TableRow>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 1"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 2"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 3"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 4"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 5"/>
-                </TableRow>
-                <TableRow>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 1"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 2"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 3"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 4"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 5"/>
-                </TableRow>
-            </TableLayout>
-
-            <!-- Repeat for Rows 3 and 4 similarly -->
-            <!-- Third Row -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="8dp">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Row 3" />
-
-                <Button
-                    android:id="@+id/dropdown_button3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="▼" />
-            </LinearLayout>
-
-            <TableLayout
-                android:id="@+id/table3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="gone">
-
-                <!-- Define 5 rows with 5 columns each -->
-                <TableRow>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 1"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 2"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 3"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 4"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 5"/>
-                </TableRow>
-                <!-- Repeat the TableRow for 5 rows -->
-                <TableRow>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 1"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 2"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 3"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 4"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 5"/>
-                </TableRow>
-                <TableRow>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 1"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 2"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 3"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 4"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 5"/>
-                </TableRow>
-                <TableRow>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 1"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 2"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 3"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 4"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 5"/>
-                </TableRow>
-                <TableRow>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 1"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 2"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 3"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 4"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 5"/>
-                </TableRow>
-            </TableLayout>
-
-            <!-- Fourth Row -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="8dp">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Row 4" />
-
-                <Button
-                    android:id="@+id/dropdown_button4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="▼" />
-            </LinearLayout>
-
-            <TableLayout
-                android:id="@+id/table4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="gone">
-
-                <!-- Define 5 rows with 5 columns each -->
-                <TableRow>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 1"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 2"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 3"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 4"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 5"/>
-                </TableRow>
-                <!-- Repeat the TableRow for 5 rows -->
-                <TableRow>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 1"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 2"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 3"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 4"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 5"/>
-                </TableRow>
-                <TableRow>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 1"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 2"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 3"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 4"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 5"/>
-                </TableRow>
-                <TableRow>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 1"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 2"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 3"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 4"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 5"/>
-                </TableRow>
-                <TableRow>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 1"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 2"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 3"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 4"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 5"/>
-                </TableRow>
-            </TableLayout>
-
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    private fun toggleTableVisibility(table: TableLayout) {
+        if (table.visibility == View.GONE) {
+            table.visibility = View.VISIBLE
+        } else {
+            table.visibility = View.GONE
+        }
+    }
+}
