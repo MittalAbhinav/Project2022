@@ -1,161 +1,288 @@
-<?xml version="1.0" encoding="utf-8"?><!--
-  ~ Copyright (c) 2021. Samsung Electronics Co., Ltd.
-  ~ @author YOUNGJIN JO (yjspecial.jo@samsung.com) IMS Platform team / CP Solution R&D
-  ~
-  ~ All right reserved. This software is the confidential and proprietary
-  ~ information of Samsung Electronics ("Confidential Information").
-  ~ You shall not disclose such Confidential Information and shall use it
-  ~ only in accordance with the terms of the license agreement you
-  ~ entered into with Samsung Electronics.
-  -->
-
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
-
-    <androidx.drawerlayout.widget.DrawerLayout
-        android:id="@+id/drawer_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fitsSystemWindows="true"
-        tools:openDrawer="start">
-
-        <include
-            android:id="@+id/app_bar_main"
-            layout="@layout/app_bar_main"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-        <com.google.android.material.navigation.NavigationView
-            android:id="@+id/nav_view"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="start"
-            android:fitsSystemWindows="true"
-            app:headerLayout="@layout/nav_header_main"
-            app:menu="@menu/navigation_menu_drawer" />
-    </androidx.drawerlayout.widget.DrawerLayout>
-</layout>
----------------------------------------------
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp"
-    tools:context=".ui.viewers.fragments.NewPageFragment">
+    tools:context=".ui.viewers.fragments.McsDbFragment">
 
-    <ScrollView
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:cardElevation="4dp"
+        app:cardCornerRadius="8dp">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="16dp">
 
-            <!-- Repeat this block for 5 rows -->
-            <androidx.cardview.widget.CardView
+            <!-- First Row -->
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                app:cardCornerRadius="8dp"
-                app:cardElevation="4dp">
+                android:orientation="horizontal"
+                android:padding="8dp">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <TextView
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="8dp">
+                    android:layout_weight="1"
+                    android:text="Row 1" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical">
+                <Button
+                    android:id="@+id/dropdown_button1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="▼" />
+            </LinearLayout>
 
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="Row 1"
-                            android:textAppearance="?android:attr/textAppearanceListItem" />
+            <TableLayout
+                android:id="@+id/table1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone">
 
-                        <ImageButton
-                            android:id="@+id/expand_button_1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/ic_expand_more"
-                            android:contentDescription="@string/expand"
-                            android:onClick="toggleVisibility" />
-                    </LinearLayout>
+                <!-- Define 5 rows with 5 columns each -->
+                <TableRow>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 1"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 2"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 3"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 4"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 5"/>
+                </TableRow>
+                <!-- Repeat the TableRow for 5 rows -->
+                <TableRow>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 1"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 2"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 3"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 4"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 5"/>
+                </TableRow>
+                <TableRow>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 1"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 2"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 3"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 4"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 5"/>
+                </TableRow>
+                <TableRow>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 1"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 2"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 3"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 4"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 5"/>
+                </TableRow>
+                <TableRow>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 1"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 2"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 3"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 4"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 5"/>
+                </TableRow>
+            </TableLayout>
 
-                    <LinearLayout
-                        android:id="@+id/extra_rows_1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:visibility="gone"
-                        android:paddingStart="16dp">
+            <!-- Repeat the above LinearLayout and TableLayout block for 4 rows -->
+            <!-- Second Row -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="8dp">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Extra Row 1.1"
-                            android:textAppearance="?android:attr/textAppearanceListItem" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Row 2" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Extra Row 1.2"
-                            android:textAppearance="?android:attr/textAppearanceListItem" />
-                    </LinearLayout>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-            <!-- Repeat until here -->
+                <Button
+                    android:id="@+id/dropdown_button2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="▼" />
+            </LinearLayout>
+
+            <TableLayout
+                android:id="@+id/table2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone">
+
+                <!-- Define 5 rows with 5 columns each -->
+                <TableRow>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 1"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 2"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 3"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 4"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 5"/>
+                </TableRow>
+                <!-- Repeat the TableRow for 5 rows -->
+                <TableRow>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 1"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 2"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 3"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 4"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 5"/>
+                </TableRow>
+                <TableRow>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 1"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 2"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 3"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 4"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 5"/>
+                </TableRow>
+                <TableRow>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 1"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 2"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 3"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 4"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 5"/>
+                </TableRow>
+                <TableRow>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 1"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 2"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 3"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 4"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 5"/>
+                </TableRow>
+            </TableLayout>
+
+            <!-- Repeat for Rows 3 and 4 similarly -->
+            <!-- Third Row -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Row 3" />
+
+                <Button
+                    android:id="@+id/dropdown_button3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="▼" />
+            </LinearLayout>
+
+            <TableLayout
+                android:id="@+id/table3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone">
+
+                <!-- Define 5 rows with 5 columns each -->
+                <TableRow>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 1"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 2"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 3"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 4"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 5"/>
+                </TableRow>
+                <!-- Repeat the TableRow for 5 rows -->
+                <TableRow>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 1"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 2"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 3"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 4"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 5"/>
+                </TableRow>
+                <TableRow>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 1"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 2"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 3"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 4"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 5"/>
+                </TableRow>
+                <TableRow>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 1"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 2"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 3"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 4"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 5"/>
+                </TableRow>
+                <TableRow>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 1"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 2"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 3"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 4"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 5"/>
+                </TableRow>
+            </TableLayout>
+
+            <!-- Fourth Row -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Row 4" />
+
+                <Button
+                    android:id="@+id/dropdown_button4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="▼" />
+            </LinearLayout>
+
+            <TableLayout
+                android:id="@+id/table4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone">
+
+                <!-- Define 5 rows with 5 columns each -->
+                <TableRow>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 1"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 2"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 3"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 4"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 5"/>
+                </TableRow>
+                <!-- Repeat the TableRow for 5 rows -->
+                <TableRow>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 1"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 2"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 3"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 4"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 5"/>
+                </TableRow>
+                <TableRow>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 1"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 2"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 3"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 4"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 5"/>
+                </TableRow>
+                <TableRow>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 1"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 2"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 3"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 4"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 5"/>
+                </TableRow>
+                <TableRow>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 1"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 2"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 3"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 4"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cell 5"/>
+                </TableRow>
+            </TableLayout>
 
         </LinearLayout>
-    </ScrollView>
-</LinearLayout>
+    </androidx.cardview.widget.CardView>
 
----------------------------------------------------
-package com.sec.imslogger.ui.viewers.fragments
-
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.LinearLayout
-import androidx.fragment.app.Fragment
-import com.sec.imslogger.R
-
-class NewPageFragment : Fragment() {
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.new_page_fragment, container, false)
-
-        // Set up click listeners to toggle visibility of extra rows
-        setupToggle(view, R.id.expand_button_1, R.id.extra_rows_1)
-        // Repeat for other rows...
-
-        return view
-    }
-
-    private fun setupToggle(view: View, buttonId: Int, layoutId: Int) {
-        val button: View = view.findViewById(buttonId)
-        val layout: LinearLayout = view.findViewById(layoutId)
-        button.setOnClickListener {
-            if (layout.visibility == View.VISIBLE) {
-                layout.visibility = View.GONE
-            } else {
-                layout.visibility = View.VISIBLE
-            }
-        }
-    }
-}
-
----------------------------------------------------------
+</androidx.constraintlayout.widget.ConstraintLayout>
