@@ -1,37 +1,21 @@
-package com.sec.imslogger.data
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="8dp">
 
-import android.content.ContentResolver
-import android.content.ContentValues
-import android.content.Context
-import android.database.Cursor
-import android.net.Uri
+    <TextView
+        android:id="@+id/nav_item_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="MCS DB"
+        android:textAppearance="?android:attr/textAppearanceListItem" />
 
-open class BaseMCSDBQuery(private val context: Context, private val contentUri: Uri) {
-
-    private val contentResolver: ContentResolver = context.contentResolver
-
-    // Function to query data from the content provider
-    fun query(
-        projection: Array<String>? = null,
-        selection: String? = null,
-        selectionArgs: Array<String>? = null,
-        sortOrder: String? = null
-    ): Cursor? {
-        return contentResolver.query(contentUri, projection, selection, selectionArgs, sortOrder)
-    }
-
-    // Function to insert data into the content provider
-    fun insert(values: ContentValues): Uri? {
-        return contentResolver.insert(contentUri, values)
-    }
-
-    // Function to update data in the content provider
-    fun update(values: ContentValues, selection: String?, selectionArgs: Array<String>?): Int {
-        return contentResolver.update(contentUri, values, selection, selectionArgs) ?: 0
-    }
-
-    // Function to delete data from the content provider
-    fun delete(selection: String?, selectionArgs: Array<String>?): Int {
-        return contentResolver.delete(contentUri, selection, selectionArgs) ?: 0
-    }
-}
+    <Button
+        android:id="@+id/nav_item_clear_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Clear" />
+</LinearLayout>
