@@ -1,139 +1,27 @@
 package com.sec.imslogger.data
 
+import android.content.ContentValues
 import android.content.Context
+import android.database.Cursor
 import android.net.Uri
-import android.widget.TableLayout
-import android.widget.TableRow
-import android.widget.TextView
 
 class RcsDbQuery(context: Context) : BaseMCSDBQuery(context, Uri.parse("content://rcs")) {
 
     fun queryAndFillTable(table: TableLayout) {
-        val cursor = query()
+        val cursor = query(projection = arrayOf("address", "body", "date"))
         cursor?.let {
-            // Dynamically create headers based on column names
-            if (it.moveToFirst()) {
-                val columnNames = it.columnNames
-                val headerRow = TableRow(context)
-                for (columnName in columnNames) {
-                    headerRow.addView(createTextView(columnName))
-                }
-                table.addView(headerRow)
+            it.moveToFirst() // Move to the first row (header)
+            while (it.moveToNext()) { // Start filling from the second row
+                val newRow = TableRow(context)
+                val address = it.getString(it.getColumnIndex("address"))
+                val body = it.getString(it.getColumnIndex("body"))
+                val date = it.getString(it.getColumnIndex("date"))
 
-                // Fill the table with data
-                do {
-                    val dataRow = TableRow(context)
-                    for (columnName in columnNames) {
-                        val value = it.getString(it.getColumnIndex(columnName))
-                        dataRow.addView(createTextView(value ?: ""))
-                    }
-                    table.addView(dataRow)
-                } while (it.moveToNext())
-            }
-            it.close()
-        }
-    }
+                newRow.addView(createTextView(address))
+                newRow.addView(createTextView(body))
+                newRow.addView(createTextView(date))
 
-    private fun createTextView(text: String): TextView {
-        return TextView(context).apply {
-            setText(text)
-            layoutParams = TableRow.LayoutParams(
-                TableRow.LayoutParams.WRAP_CONTENT,
-                TableRow.LayoutParams.WRAP_CONTENT
-            )
-            setPadding(8, 8, 8, 8)
-        }
-    }
-
-    fun exampleFunction(slotId: String) {
-        // Implement function logic here using slotId
-    }
-}
-
---------------------
-package com.sec.imslogger.data
-
-import android.content.Context
-import android.net.Uri
-import android.widget.TableLayout
-import android.widget.TableRow
-import android.widget.TextView
-
-class MmsDbQuery(context: Context) : BaseMCSDBQuery(context, Uri.parse("content://mms")) {
-
-    fun queryAndFillTable(table: TableLayout) {
-        val cursor = query()
-        cursor?.let {
-            // Dynamically create headers based on column names
-            if (it.moveToFirst()) {
-                val columnNames = it.columnNames
-                val headerRow = TableRow(context)
-                for (columnName in columnNames) {
-                    headerRow.addView(createTextView(columnName))
-                }
-                table.addView(headerRow)
-
-                // Fill the table with data
-                do {
-                    val dataRow = TableRow(context)
-                    for (columnName in columnNames) {
-                        val value = it.getString(it.getColumnIndex(columnName))
-                        dataRow.addView(createTextView(value ?: ""))
-                    }
-                    table.addView(dataRow)
-                } while (it.moveToNext())
-            }
-            it.close()
-        }
-    }
-
-    private fun createTextView(text: String): TextView {
-        return TextView(context).apply {
-            setText(text)
-            layoutParams = TableRow.LayoutParams(
-                TableRow.LayoutParams.WRAP_CONTENT,
-                TableRow.LayoutParams.WRAP_CONTENT
-            )
-            setPadding(8, 8, 8, 8)
-        }
-    }
-
-    fun exampleFunction(slotId: String) {
-        // Implement function logic here using slotId
-    }
-}
-------------------------
-package com.sec.imslogger.data
-
-import android.content.Context
-import android.net.Uri
-import android.widget.TableLayout
-import android.widget.TableRow
-import android.widget.TextView
-
-class SmsDbQuery(context: Context) : BaseMCSDBQuery(context, Uri.parse("content://sms")) {
-
-    fun queryAndFillTable(table: TableLayout) {
-        val cursor = query()
-        cursor?.let {
-            // Dynamically create headers based on column names
-            if (it.moveToFirst()) {
-                val columnNames = it.columnNames
-                val headerRow = TableRow(context)
-                for (columnName in columnNames) {
-                    headerRow.addView(createTextView(columnName))
-                }
-                table.addView(headerRow)
-
-                // Fill the table with data
-                do {
-                    val dataRow = TableRow(context)
-                    for (columnName in columnNames) {
-                        val value = it.getString(it.getColumnIndex(columnName))
-                        dataRow.addView(createTextView(value ?: ""))
-                    }
-                    table.addView(dataRow)
-                } while (it.moveToNext())
+                table.addView(newRow)
             }
             it.close()
         }
