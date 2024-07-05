@@ -1,21 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:padding="8dp">
+ smsTable = view.findViewById(R.id.table1)
+        mmsTable = view.findViewById(R.id.table2)
+        rcsTable = view.findViewById(R.id.table3)
 
-    <TextView
-        android:id="@+id/nav_item_title"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="MCS DB"
-        android:textAppearance="?android:attr/textAppearanceListItem" />
+        smsDbQuery = SmsDbQuery(requireContext())
+        mmsDbQuery = MmsDbQuery(requireContext())
+        rcsDbQuery = RcsDbQuery(requireContext())
 
-    <Button
-        android:id="@+id/nav_item_clear_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Clear" />
-</LinearLayout>
+        val clearButton: Button = view.findViewById(R.id.clear_button)
+        clearButton.setOnClickListener {
+            clearTables()
+        }
+
+        // Query and fill tables
+        smsDbQuery.queryAndFillTable(smsTable)
+        mmsDbQuery.queryAndFillTable(mmsTable)
+        rcsDbQuery.queryAndFillTable(rcsTable)
