@@ -1,4 +1,17 @@
- smsTable = view.findViewById(R.id.table1)
+    private lateinit var smsTable: TableLayout
+    private lateinit var mmsTable: TableLayout
+    private lateinit var rcsTable: TableLayout
+    private lateinit var smsDbQuery: SmsDbQuery
+    private lateinit var mmsDbQuery: MmsDbQuery
+    private lateinit var rcsDbQuery: RcsDbQuery
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val view = inflater.inflate(R.layout.mcs_db_fragment, container, false)
+
+        smsTable = view.findViewById(R.id.table1)
         mmsTable = view.findViewById(R.id.table2)
         rcsTable = view.findViewById(R.id.table3)
 
@@ -15,3 +28,4 @@
         smsDbQuery.queryAndFillTable(smsTable)
         mmsDbQuery.queryAndFillTable(mmsTable)
         rcsDbQuery.queryAndFillTable(rcsTable)
+
